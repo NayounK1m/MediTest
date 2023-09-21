@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemCtrl : MonoBehaviour
 {
     public GameObject mediListPage;
+    
     public void DeleteBtn()
     {
         Destroy(transform.parent.gameObject);

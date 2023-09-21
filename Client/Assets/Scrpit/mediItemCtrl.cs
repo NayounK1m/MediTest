@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 
 public class mediItemCtrl : MonoBehaviour
 {
+
     // Start is called before the first frame update
     public void mediItemBtn()
     {
@@ -19,5 +20,9 @@ public class mediItemCtrl : MonoBehaviour
         GameObject infoPage = GameObject.Find("Canvas").transform.Find("mediInfoPage").gameObject;
         infoPage.SetActive(true);
         getDataManger.buttonRefresh_Click();
+
+        
     }
+
+    
 }

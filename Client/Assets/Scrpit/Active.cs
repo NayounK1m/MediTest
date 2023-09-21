@@ -136,11 +136,22 @@ public class Active : MonoBehaviour
         tmpObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "1회 투약량 : " + dosage;
         tmpObject.transform.GetChild(2).GetComponent<TMP_Text>().text = "1일 투여횟수 : " + numD;
         tmpObject.transform.GetChild(3).GetComponent<TMP_Text>().text = "총 투약일수 : " + dayD;
+
+        //이미지 변경
+        tmpObject.transform.GetChild(4).GetComponent<Image>().sprite 
+        = Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
+        tmpObject.transform.GetChild(5).GetComponent<Image>().sprite 
+        = Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
+        tmpObject.transform.GetChild(6).GetComponent<Image>().sprite 
+        = Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
+        tmpObject.transform.GetChild(7).GetComponent<Image>().sprite 
+        = Resources.Load("MediImage/smoke", typeof(Sprite)) as Sprite;
         //GameObject.Instantiate(itemPrefab).transform.parent = scrollContent.transform;
 
         mediName = mn;
 
     }
+
 
     public void inputDonebtn()
     {
