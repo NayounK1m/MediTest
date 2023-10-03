@@ -87,7 +87,7 @@ gradle-app.setting
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-/Client/[Ll]ibrary/
+[Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
