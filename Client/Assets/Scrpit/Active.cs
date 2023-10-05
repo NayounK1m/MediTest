@@ -14,13 +14,14 @@ public class Active : MonoBehaviour
     public GameObject dosageIF;
     public GameObject dayDoIF;
     public GameObject numDoIF;
+    public GameObject hospitalIF;
 
     public GameObject InputPanel;
     public GameObject mediPanel;
     public GameObject MainPanel;
     public GameObject CreatePanel;
     public GameObject SelectPanel;
-     public GameObject AddCalPanel;
+    public GameObject AddCalPanel;
     public TMP_InputField nameInput;
     public TMP_InputField ageInput;
     private string pageName = null;
@@ -43,7 +44,7 @@ public class Active : MonoBehaviour
     public TMP_InputField LTimeHH;
     public TMP_InputField LTimeMM;
     public GameObject CalMemoPrefab;
-    public Transform CalCon;
+    public Transform CalCon; //임시 달력 리스트
 
     public void CalandersaveDoneBtn(string fd, string ld)
     {
@@ -128,7 +129,7 @@ public class Active : MonoBehaviour
 
     public static string mediName {get; set;}
 
-   private void createMedi(string mn, string dosage, string numD, string dayD)
+   private void createMedi(string mn, string dosage, string numD, string dayD, string hospital)
     {
         GameObject tmpObject = GameObject.Instantiate(mediItemPrefab) ;    // 오브젝트 생성
         tmpObject.transform.SetParent(mediScrollContent.transform);                           // 부모에 붙임
@@ -136,15 +137,16 @@ public class Active : MonoBehaviour
         tmpObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "1회 투약량 : " + dosage;
         tmpObject.transform.GetChild(2).GetComponent<TMP_Text>().text = "1일 투여횟수 : " + numD;
         tmpObject.transform.GetChild(3).GetComponent<TMP_Text>().text = "총 투약일수 : " + dayD;
+        tmpObject.transform.GetChild(4).GetComponent<TMP_Text>().text = "병원 : " + hospital;
 
         //이미지 변경
-        tmpObject.transform.GetChild(4).GetComponent<Image>().sprite 
-        = Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
         tmpObject.transform.GetChild(5).GetComponent<Image>().sprite 
-        = Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
+        = Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
         tmpObject.transform.GetChild(6).GetComponent<Image>().sprite 
-        = Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
+        = Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
         tmpObject.transform.GetChild(7).GetComponent<Image>().sprite 
+        = Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
+        tmpObject.transform.GetChild(8).GetComponent<Image>().sprite 
         = Resources.Load("MediImage/smoke", typeof(Sprite)) as Sprite;
         //GameObject.Instantiate(itemPrefab).transform.parent = scrollContent.transform;
 
@@ -155,14 +157,15 @@ public class Active : MonoBehaviour
 
     public void inputDonebtn()
     {
-        
         createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
-        numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text);
+        numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
+        hospitalIF.GetComponent<TMP_InputField>().text);
 
         nameIF.GetComponent<TMP_InputField>().text = "";
         dosageIF.GetComponent<TMP_InputField>().text = "";
         numDoIF.GetComponent<TMP_InputField>().text = "";
         dayDoIF.GetComponent<TMP_InputField>().text = "";
+        hospitalIF.GetComponent<TMP_InputField>().text = "";
 
         InputPanel.SetActive(false);
         mediPanel.SetActive(true);
