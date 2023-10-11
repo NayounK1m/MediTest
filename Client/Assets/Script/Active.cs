@@ -16,6 +16,7 @@ public class Active : MonoBehaviour
 	public GameObject dayDoIF;
 	public GameObject numDoIF;
 	public GameObject hospitalIF;
+	public GameObject diseaseIF;
 
 	public GameObject InputPanel;
 	public GameObject mediPanel;
@@ -166,22 +167,22 @@ public class Active : MonoBehaviour
 		//이미지 변경
 		if (result[0] == true)
 		{
-			tmpObject.transform.GetChild(5).GetComponent<Image>().sprite
+			tmpObject.transform.GetChild(6).GetComponent<Image>().sprite
 			= Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
 		}
 		if (result[1] == true)
 		{
-			tmpObject.transform.GetChild(6).GetComponent<Image>().sprite
+			tmpObject.transform.GetChild(7).GetComponent<Image>().sprite
 			= Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
 		}
 		if (result[2] == true)
 		{
-			tmpObject.transform.GetChild(7).GetComponent<Image>().sprite
+			tmpObject.transform.GetChild(8).GetComponent<Image>().sprite
 					= Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
 		}
 		if (result[3] == true)
 		{
-			tmpObject.transform.GetChild(8).GetComponent<Image>().sprite
+			tmpObject.transform.GetChild(9).GetComponent<Image>().sprite
 					= Resources.Load("MediImage/smoke", typeof(Sprite)) as Sprite;
 		}
 
@@ -196,13 +197,14 @@ public class Active : MonoBehaviour
 	{
 		createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
 		numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
-		hospitalIF.GetComponent<TMP_InputField>().text, hospitalIF.GetComponent<TMP_InputField>().text);
+		hospitalIF.GetComponent<TMP_InputField>().text, diseaseIF.GetComponent<TMP_InputField>().text);
 
 		nameIF.GetComponent<TMP_InputField>().text = "";
 		dosageIF.GetComponent<TMP_InputField>().text = "";
 		numDoIF.GetComponent<TMP_InputField>().text = "";
 		dayDoIF.GetComponent<TMP_InputField>().text = "";
 		hospitalIF.GetComponent<TMP_InputField>().text = "";
+		diseaseIF.GetComponent<TMP_InputField>().text = "";
 
 		InputPanel.SetActive(false);
 		mediPanel.SetActive(true);
