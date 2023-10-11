@@ -196,7 +196,7 @@ public class Active : MonoBehaviour
 	{
 		createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
 		numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
-		hospitalIF.GetComponent<TMP_InputField>().text);
+		hospitalIF.GetComponent<TMP_InputField>().text, hospitalIF.GetComponent<TMP_InputField>().text);
 
 		nameIF.GetComponent<TMP_InputField>().text = "";
 		dosageIF.GetComponent<TMP_InputField>().text = "";
