@@ -136,10 +136,13 @@ public class Active : MonoBehaviour
 
 	private bool[] overlapCheck(List<string> preMedicine , string newMedicine)
 	{
+		//챗지피티 연구필요 임시로 1011리턴
 		preMedicine.Add(newMedicine);
 		bool[] result = new bool[4];
 		result[0] = true;
-		// 서버에서 받아와서 체크
+		result[1] = false;
+		result[2] = true;
+		result[3] = true;
 		return result;
 	}
 
@@ -193,7 +196,7 @@ public class Active : MonoBehaviour
 	{
 		createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
 		numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
-		hospitalIF.GetComponent<TMP_InputField>().text);
+		hospitalIF.GetComponent<TMP_InputField>().text, hospitalIF.GetComponent<TMP_InputField>().text);
 
 		nameIF.GetComponent<TMP_InputField>().text = "";
 		dosageIF.GetComponent<TMP_InputField>().text = "";
