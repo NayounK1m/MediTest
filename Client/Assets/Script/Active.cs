@@ -48,27 +48,6 @@ public class Active : MonoBehaviour
 	public GameObject CalMemoPrefab;
 	public Transform CalCon; //임시 달력 리스트
 
-	public void CalandersaveDoneBtn(string fd, string ld)
-	{
-		Debug.Log("1");
-		if(fd == null || FTimeHH.text == null || DateName.text == null)
-		{
-			Debug.Log("null");
-			//예외처리
-			inputCalPanel.SetActive(false);
-		}
-		else
-		{
-			Debug.Log(fd + FTimeHH.text + DateName.text);
-			GameObject tmpObject = GameObject.Instantiate(CalMemoPrefab) ;    // 오브젝트 생성
-			tmpObject.transform.SetParent(CalCon);                           // 부모에 붙임
-			tmpObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "날짜: " + fd + "~" + ld;
-			tmpObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "시간: " + FTimeHH.text + ":" + FTimeMM.text + "~" + LTimeHH.text + ":" + LTimeMM.text;
-			tmpObject.transform.GetChild(2).GetComponent<TMP_Text>().text = DateName.text;
-			inputCalPanel.SetActive(false);
-		}
-	}
-
 	public void GoToCalanderBtn()
 	{
 		calanderPanel.SetActive(true);
@@ -139,10 +118,26 @@ public class Active : MonoBehaviour
 			}
 		}
 	}
+	public GameObject List;
 
 	private List<string> getPreMedilist()	//기존 약 이름만 get 한다음 List에추가, 리턴 작업: 김나연
 	{
 		List<string> result = new List<string>();
+		
+		Transform[] allChildren = List.GetComponentsInChildren<Transform>();
+		Transform[] allChildrenChild = allChildren[1].GetComponentsInChildren<Transform>();
+		Debug.Log(allChildren[1].name); //MediItem
+		foreach(Transform child in allChildrenChild) 
+		{
+    		// 자기 자신의 경우엔 무시 
+    		// (게임오브젝트명이 다 다르다고 가정했을 때 통하는 코드)
+    		if(child.name == transform.name)
+			Debug.Log("무시");
+
+			Debug.Log(child.GetChild(0).GetComponent<TMP_Text>().text);
+    		result.Add(child.GetChild(0).GetComponent<TMP_Text>().text);
+			
+		}
 		return result;
 	}
 
@@ -158,6 +153,48 @@ public class Active : MonoBehaviour
 		return result;
 	}
 
+	private void overlapChangeImage()
+	{
+		//부작용 체크
+		Transform[] allChildren = List.GetComponentsInChildren<Transform>();
+		Transform[] allChildrenChild = allChildren[1].GetComponentsInChildren<Transform>();
+		Debug.Log(allChildren[1].name); //MediItem
+		foreach(Transform child in allChildrenChild) 
+		{
+    		// 자기 자신의 경우엔 무시 
+    		// (게임오브젝트명이 다 다르다고 가정했을 때 통하는 코드)
+    		if(child.name == transform.name)
+			Debug.Log("무시");
+			else if(child == null)
+			Debug.Log("null");
+    
+			Debug.Log(child.GetChild(0).GetComponent<TMP_Text>().text);
+			bool[] result = overlapCheck(getPreMedilist(), child.GetChild(0).GetComponent<TMP_Text>().text);
+    				//이미지 변경
+			if (result[0] == true)
+			{
+				child.GetChild(6).GetComponent<Image>().sprite
+				= Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
+			}
+			if (result[1] == true)
+			{
+				child.GetChild(7).GetComponent<Image>().sprite
+				= Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
+			}
+			if (result[2] == true)
+			{
+				child.GetChild(8).GetComponent<Image>().sprite
+					= Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
+			}
+			if (result[3] == true)
+			{
+				child.GetChild(9).GetComponent<Image>().sprite
+					= Resources.Load("MediImage/smoke", typeof(Sprite)) as Sprite;
+			}
+			
+		}
+
+	}
 	public static string mediName {get; set;}
 
 	private void createMedi(string mn, string dosage, string numD, string dayD, string hospital, string disease)
@@ -171,31 +208,30 @@ public class Active : MonoBehaviour
 		tmpObject.transform.GetChild(4).GetComponent<TMP_Text>().text = "병원 : " + hospital;
 		tmpObject.transform.GetChild(5).GetComponent<TMP_Text>().text = "질병 : " + disease; //질병정보 추가 필요
 
-		//부작용 체크
+		// //부작용 체크
+		// bool[] result = overlapCheck(getPreMedilist(), mn);
 
-		bool[] result = overlapCheck(getPreMedilist(), mn);
-
-		//이미지 변경
-		if (result[0] == true)
-		{
-			tmpObject.transform.GetChild(6).GetComponent<Image>().sprite
-			= Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
-		}
-		if (result[1] == true)
-		{
-			tmpObject.transform.GetChild(7).GetComponent<Image>().sprite
-			= Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
-		}
-		if (result[2] == true)
-		{
-			tmpObject.transform.GetChild(8).GetComponent<Image>().sprite
-					= Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
-		}
-		if (result[3] == true)
-		{
-			tmpObject.transform.GetChild(9).GetComponent<Image>().sprite
-					= Resources.Load("MediImage/smoke", typeof(Sprite)) as Sprite;
-		}
+		// //이미지 변경
+		// if (result[0] == true)
+		// {
+		// 	tmpObject.transform.GetChild(6).GetComponent<Image>().sprite
+		// 	= Resources.Load("MediImage/overlap", typeof(Sprite)) as Sprite;
+		// }
+		// if (result[1] == true)
+		// {
+		// 	tmpObject.transform.GetChild(7).GetComponent<Image>().sprite
+		// 	= Resources.Load("MediImage/alcohol", typeof(Sprite)) as Sprite;
+		// }
+		// if (result[2] == true)
+		// {
+		// 	tmpObject.transform.GetChild(8).GetComponent<Image>().sprite
+		// 			= Resources.Load("MediImage/pregnant", typeof(Sprite)) as Sprite;
+		// }
+		// if (result[3] == true)
+		// {
+		// 	tmpObject.transform.GetChild(9).GetComponent<Image>().sprite
+		// 			= Resources.Load("MediImage/smoke", typeof(Sprite)) as Sprite;
+		// }
 
 		GameObject.Instantiate(itemPrefab).transform.parent = scrollContent.transform;
 
@@ -206,9 +242,14 @@ public class Active : MonoBehaviour
 
 	public void inputDonebtn()
 	{
+		InputPanel.SetActive(false);
+		mediPanel.SetActive(true);
+
 		createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
 		numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
 		hospitalIF.GetComponent<TMP_InputField>().text, diseaseIF.GetComponent<TMP_InputField>().text);
+
+		overlapChangeImage();
 
 		nameIF.GetComponent<TMP_InputField>().text = "";
 		dosageIF.GetComponent<TMP_InputField>().text = "";
@@ -217,8 +258,6 @@ public class Active : MonoBehaviour
 		hospitalIF.GetComponent<TMP_InputField>().text = "";
 		diseaseIF.GetComponent<TMP_InputField>().text = "";
 
-		InputPanel.SetActive(false);
-		mediPanel.SetActive(true);
 	}
 
 	public void regiBtn()
