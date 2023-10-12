@@ -534,12 +534,28 @@ namespace Components.Calendars {
 
 		public void CalandersaveDoneBtn()
 		{
-			GameObject tmpObject = GameObject.Instantiate(CalMemoPrefab) ;    // 오브젝트 생성
-			tmpObject.transform.SetParent(CalCon);                           // 부모에 붙임
-			tmpObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "날짜: " + FirstDate + "~" + LastDate;
-			tmpObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "시간: " + FTimeHH.text + ":" + FTimeMM.text + "~" + LTimeHH.text + ":" + LTimeMM.text;
-			tmpObject.transform.GetChild(2).GetComponent<TMP_Text>().text = DateName.text;
-			inputCalPanel.SetActive(false);
+			if(FirstDate == "" || FTimeHH.text == "" || DateName.text == "")
+			{
+				Debug.Log("null");
+				//예외처리
+				inputCalPanel.SetActive(false);
+			}
+			else
+			{
+				Debug.Log(FirstDate +":" + FTimeHH.text +":" + DateName.text);
+				GameObject tmpObject = GameObject.Instantiate(CalMemoPrefab) ;    // 오브젝트 생성
+				tmpObject.transform.SetParent(CalCon);                           // 부모에 붙임
+				tmpObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "날짜: " + FirstDate + "~" + LastDate;
+				tmpObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "시간: " + FTimeHH.text + ":" + FTimeMM.text + "~" + LTimeHH.text + ":" + LTimeMM.text;
+				tmpObject.transform.GetChild(2).GetComponent<TMP_Text>().text = DateName.text;
+				inputCalPanel.SetActive(false);
+			}
+			// GameObject tmpObject = GameObject.Instantiate(CalMemoPrefab) ;    // 오브젝트 생성
+			// tmpObject.transform.SetParent(CalCon);                           // 부모에 붙임
+			// tmpObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "날짜: " + FirstDate + "~" + LastDate;
+			// tmpObject.transform.GetChild(1).GetComponent<TMP_Text>().text = "시간: " + FTimeHH.text + ":" + FTimeMM.text + "~" + LTimeHH.text + ":" + LTimeMM.text;
+			// tmpObject.transform.GetChild(2).GetComponent<TMP_Text>().text = DateName.text;
+			// inputCalPanel.SetActive(false);
 		}
 
 		private DateTime GetDateBySelectedCell(CalendarDateCell targetCell) {
