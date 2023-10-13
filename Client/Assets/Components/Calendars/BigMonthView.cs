@@ -67,6 +67,27 @@ namespace Components.Calendars {
 			m_LeftArrowButton.Click += OnButtonClick;
 			m_RightArrowButton.Click += OnButtonClick;
 			m_MonthYearButton.Click += OnButtonClick;
+
+			//키보드 숫자만 입력
+			FTimeHH.onSelect.AddListener(x =>
+			{
+				TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, true);
+			});
+
+			FTimeMM.onSelect.AddListener(x =>
+			{
+				TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, true);
+			});
+
+			LTimeHH.onSelect.AddListener(x =>
+			{
+				TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, true);
+			});
+
+			LTimeMM.onSelect.AddListener(x =>
+			{
+				TouchScreenKeyboard.Open("", TouchScreenKeyboardType.NumberPad, false, false, true);
+			});
 		}
 		
 
@@ -445,10 +466,6 @@ namespace Components.Calendars {
 			}
 		}
 
-		// сюда передается номер ряда и начальная и конечная ячейка.
-		// А метод проверяет сколько ячеек между ними, входят в конкретный ряд
-		// и возвращаяет начальную и конечную ячейку в переделах указанного ряда
-		// нужно для многострочного выделения
 		// finds first and last cells that are within the specified time span and lay within the current row
 		private void GetCellSpanForRow(int curRow, out CalendarDateCell rowStartCell, out CalendarDateCell rowEndCell,
 			CalendarDateCell startCell, CalendarDateCell endCell, int rowStart, int rowEnd) {
@@ -463,23 +480,19 @@ namespace Components.Calendars {
 			var bothInSameRow = rowStart == rowEnd;
 			if (!bothInSameRow) {
 				if (rowStart == curRow) {
-					// первый точно должен быть в этом ряду
 					rowStartCell = row.First(c => c.Day == startCell.Day);
 					rowEndCell = row.Last();
 				}
 				else if (curRow != rowStart && curRow != rowEnd) {
-					// этот ряд должен быть заполнен полностью
 					rowStartCell = row.First();
 					rowEndCell = row.Last();
 				}
 				else {
-					// в этом ряду должен быть только последний
 					rowStartCell = row.First();
 					rowEndCell = row.First(c => c.Day == endCell.Day);
 				}
 			}
 			else {
-				// оба в одном ряду
 				rowStartCell = row.FirstOrDefault(c => c.Day == startCell.Day);
 				rowEndCell = row.LastOrDefault(c => c.Day == endCell.Day);
 			}
@@ -531,14 +544,30 @@ namespace Components.Calendars {
 		public TMP_InputField LTimeMM;
 		public GameObject CalMemoPrefab;
 		public Transform CalCon;
+		public GameObject Notice_calPopup;
 
+		private void CalNoticePopupFalse()
+        {
+			Notice_calPopup.SetActive(false);
+		}
 		public void CalandersaveDoneBtn()
 		{
-			if(FirstDate == "" || FTimeHH.text == "" || DateName.text == "")
+			if(FirstDate == "")
 			{
 				Debug.Log("null");
 				//예외처리
+				Notice_calPopup.SetActive(true);
+				Notice_calPopup.transform.GetChild(0).GetComponent<TMP_Text>().text = "날짜를 선택해주세요. \n 꾹 누르면 선택이 가능합니다."; 
+				Invoke("CalNoticePopupFalse", 3);
 				inputCalPanel.SetActive(false);
+			}
+			else if (FTimeHH.text == "" || DateName.text == "")
+			{ 
+				Debug.Log("null");
+				Notice_calPopup.SetActive(true);
+				Notice_calPopup.transform.GetChild(0).GetComponent<TMP_Text>().text = "제목 또는 시간이 작성이 안 되어 있습니다. \n 제목과 시간을 작성해주세요.";
+				Invoke("CalNoticePopupFalse", 3);
+				Notice_calPopup.SetActive(true);
 			}
 			else
 			{
