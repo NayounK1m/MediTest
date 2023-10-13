@@ -125,7 +125,7 @@ public class Active : MonoBehaviour
 		List<string> result = new List<string>();
 		
 		Transform[] allChildren = List.GetComponentsInChildren<Transform>();
-		Transform[] allChildrenChild = allChildren[1].GetComponentsInChildren<Transform>();
+		Transform[] allChildrenChild = allChildren[0].GetChild(0).GetComponents<Transform>();
 		Debug.Log(allChildren[1].name); //MediItem
 		foreach(Transform child in allChildrenChild) 
 		{
@@ -133,7 +133,8 @@ public class Active : MonoBehaviour
     		// (게임오브젝트명이 다 다르다고 가정했을 때 통하는 코드)
     		if(child.name == transform.name)
 			Debug.Log("무시");
-
+			Debug.Log(child);
+			Debug.Log(child.GetChild(0));
 			Debug.Log(child.GetChild(0).GetComponent<TMP_Text>().text);
     		result.Add(child.GetChild(0).GetComponent<TMP_Text>().text);
 			
@@ -157,7 +158,7 @@ public class Active : MonoBehaviour
 	{
 		//부작용 체크
 		Transform[] allChildren = List.GetComponentsInChildren<Transform>();
-		Transform[] allChildrenChild = allChildren[1].GetComponentsInChildren<Transform>();
+		Transform[] allChildrenChild = allChildren[1].GetComponents<Transform>();
 		Debug.Log(allChildren[1].name); //MediItem
 		foreach(Transform child in allChildrenChild) 
 		{
