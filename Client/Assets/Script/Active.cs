@@ -245,10 +245,9 @@ public class Active : MonoBehaviour
 	{
 		InputPanel.SetActive(false);
 		mediPanel.SetActive(true);
-
 		createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
 		numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
-		hospitalIF.GetComponent<TMP_InputField>().text, diseaseIF.GetComponent<TMP_InputField>().text);
+		hospitalIF.transform.GetChild(0).GetComponent<TMP_Text>().text, diseaseIF.GetComponent<TMP_InputField>().text);
 
 		overlapChangeImage();
 
@@ -256,7 +255,7 @@ public class Active : MonoBehaviour
 		dosageIF.GetComponent<TMP_InputField>().text = "";
 		numDoIF.GetComponent<TMP_InputField>().text = "";
 		dayDoIF.GetComponent<TMP_InputField>().text = "";
-		hospitalIF.GetComponent<TMP_InputField>().text = "";
+		hospitalIF.transform.GetChild(0).GetComponent<TMP_Text>().text = "";
 		diseaseIF.GetComponent<TMP_InputField>().text = "";
 
 	}

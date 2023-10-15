@@ -19361,7 +19361,7 @@ MonoBehaviour:
   dosageIF: {fileID: 957138724}
   dayDoIF: {fileID: 872129961}
   numDoIF: {fileID: 1081014287}
-  hospitalIF: {fileID: 0}
+  hospitalIF: {fileID: 56854748}
   diseaseIF: {fileID: 676146823}
   InputPanel: {fileID: 725078694}
   mediPanel: {fileID: 990868533}
