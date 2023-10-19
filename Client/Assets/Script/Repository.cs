@@ -15,6 +15,11 @@ public class Repository : MonoBehaviour
 	void Start()
 	{
 		SetHospitalDict();
+
+		//지역 선택할 경우 병원 옵션 변경
+		localDropdown.onValueChanged.AddListener(delegate {
+			ChangeHospitalDropdown(localDropdown.options[localDropdown.value].text);
+		});
 	}
 
 	// Update is called once per frame
@@ -30,7 +35,7 @@ public class Repository : MonoBehaviour
 		hospitalDict.Add("서울", seoulHospitalarr);
 
 		string[] daejeonHospitalarr = { "대전 병원", "대전 클리닉" };
-		hospitalDict.Add("대전", seoulHospitalarr);
+		hospitalDict.Add("대전", daejeonHospitalarr);
 	}
 
 	public Dictionary<string, string[]> GetHospitalDict()
@@ -41,28 +46,31 @@ public class Repository : MonoBehaviour
 	
 	public void ChangeDropdown()
     {
-		foreach(KeyValuePair<string, string[]> keyValuePair in hospitalDict)
+		localDropdown.ClearOptions();
+		Dropdown.OptionData firsthospitaldataOption = new Dropdown.OptionData();
+		firsthospitaldataOption.text = "지역";
+		localDropdown.options.Add(firsthospitaldataOption);
+		foreach (KeyValuePair<string, string[]> keyValuePair in hospitalDict)
         {
 			Dropdown.OptionData localdataOption = new Dropdown.OptionData();
 			localdataOption.text = keyValuePair.Key;
 			localDropdown.options.Add(localdataOption);
-			//지역 선택할 경우 병원 옵션 변경
-			localDropdown.onValueChanged.AddListener(delegate {
-				ChangeHospitalDropdown(keyValuePair.Value);
-			});
-			
-			
         }
 	}
 
 	//병원 옵션 변경 코드
-	public void ChangeHospitalDropdown(string[] hospitalList)
+	public void ChangeHospitalDropdown(string hospitalDictKey)
     {
+		hospitalDropdown.ClearOptions();
+		Dropdown.OptionData firsthospitaldataOption = new Dropdown.OptionData();
+		firsthospitaldataOption.text = "병원";
+		hospitalDropdown.options.Add(firsthospitaldataOption);
+		string[] hospitalList = hospitalDict[hospitalDictKey];
 		foreach (string i in hospitalList)
 		{
 			Dropdown.OptionData hospitaldataOption = new Dropdown.OptionData();
 			hospitaldataOption.text = i;
-
+			hospitalDropdown.options.Add(hospitaldataOption);
 		}
 
 	}
