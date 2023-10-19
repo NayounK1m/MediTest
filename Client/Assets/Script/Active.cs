@@ -15,7 +15,7 @@ public class Active : MonoBehaviour
 	public GameObject dosageIF;
 	public GameObject dayDoIF;
 	public GameObject numDoIF;
-	public GameObject hospitalIF;
+	public GameObject hospitalBtn;
 	public GameObject diseaseIF;
 
 	public GameObject InputPanel;
@@ -170,7 +170,12 @@ public class Active : MonoBehaviour
 			Debug.Log("null");
     
 			Debug.Log(child.GetChild(0).GetComponent<TMP_Text>().text);
-			bool[] result = overlapCheck(getPreMedilist(), child.GetChild(0).GetComponent<TMP_Text>().text);
+			string[] split_text;
+
+			split_text = child.GetChild(0).GetComponent<TMP_Text>().text.Split(':');
+			Debug.Log("이름 : "+split_text[1]);
+			Debug.Log(split_text[1]);
+			bool[] result = overlapCheck(getPreMedilist(), split_text[1]);
     				//이미지 변경
 			if (result[0] == true)
 			{
@@ -248,7 +253,7 @@ public class Active : MonoBehaviour
 
 		createMedi(nameIF.GetComponent<TMP_InputField>().text, dosageIF.GetComponent<TMP_InputField>().text,
 		numDoIF.GetComponent<TMP_InputField>().text, dayDoIF.GetComponent<TMP_InputField>().text,
-		hospitalIF.GetComponent<TMP_InputField>().text, diseaseIF.GetComponent<TMP_InputField>().text);
+		hospitalBtn.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text, diseaseIF.GetComponent<TMP_InputField>().text);
 
 		overlapChangeImage();
 
@@ -256,7 +261,7 @@ public class Active : MonoBehaviour
 		dosageIF.GetComponent<TMP_InputField>().text = "";
 		numDoIF.GetComponent<TMP_InputField>().text = "";
 		dayDoIF.GetComponent<TMP_InputField>().text = "";
-		hospitalIF.GetComponent<TMP_InputField>().text = "";
+		hospitalBtn.GetComponent<Button>().GetComponentInChildren<TMP_Text>().text = "방문한 병원 이름";
 		diseaseIF.GetComponent<TMP_InputField>().text = "";
 
 	}
