@@ -7,6 +7,7 @@ using UnityEditor.Experimental.Rendering;
 
 public class Active : MonoBehaviour
 {
+	public GameObject CalconDone;
 	public Transform mediScrollContent;
 	public GameObject menuPanel;
 	public GameObject mediItemPrefab;
@@ -38,6 +39,11 @@ public class Active : MonoBehaviour
 	public void CalandersaveBtn()
 	{
 		inputCalPanel.SetActive(true);
+	}
+
+	public void CalanderPopupDoneBtn()
+	{
+		CalconDone.SetActive(false);
 	}
 
 	public TMP_InputField DateName;
