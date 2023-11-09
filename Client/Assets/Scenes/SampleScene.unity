@@ -6604,7 +6604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -178.57593}
+  m_AnchoredPosition: {x: 0, y: -173}
   m_SizeDelta: {x: 1080, y: 1062.9686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &755131418
@@ -14448,7 +14448,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1348661786}
         m_TargetAssemblyTypeName: AlarmClock, Assembly-CSharp
-        m_MethodName: AlarmBtn
+        m_MethodName: AddBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14508,6 +14508,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846b8b87b0974be4f855d88862e261b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputPanel: {fileID: 2131050941}
+  PrefabItem: {fileID: 4818899789146717858, guid: 376729b1c40d4d74884a0de405f4d3c3, type: 3}
+  ListContent: {fileID: 1827590713}
+  TimeHourIF: {fileID: 138797032}
+  TimeHIF: {fileID: 748022739}
+  AlarmNameIF: {fileID: 1121327766}
 --- !u!1 &1371947286
 GameObject:
   m_ObjectHideFlags: 0
@@ -20656,14 +20662,14 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
 --- !u!1 &1837245340
 GameObject:
@@ -23049,9 +23055,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1348661781}
-        m_TargetAssemblyTypeName: Active, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1348661786}
+        m_TargetAssemblyTypeName: AlarmClock, Assembly-CSharp
+        m_MethodName: DoneBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

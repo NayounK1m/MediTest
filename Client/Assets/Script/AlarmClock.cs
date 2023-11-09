@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class AlarmClock : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class AlarmClock : MonoBehaviour
 	//		.Call<AndroidJavaObject>("putExtra", EXTRA_MESSAGE, message)
 	//		.Call<AndroidJavaObject>("putExtra", EXTRA_HOUR, hour)
 	//		.Call<AndroidJavaObject>("putExtra", EXTRA_MINUTES, minutes);
-		
+
 	//	GetUnityActivity().Call("startActivity", intentAJO);
 	//}
 
@@ -31,14 +32,26 @@ public class AlarmClock : MonoBehaviour
 	//		return unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
 	//	}
 	//}
+	public GameObject InputPanel;
+	public GameObject PrefabItem;
+	public GameObject ListContent;
+	public TMP_InputField TimeHourIF;
+	public TMP_InputField TimeHIF;
+	public TMP_InputField AlarmNameIF;
 
 	public void AddBtn()
     {
+		InputPanel.SetActive(true);
 
-    }
+	}
 
 	public void DoneBtn()
     {
+		GameObject tmpObject = GameObject.Instantiate(PrefabItem);    // 오브젝트 생성
+		tmpObject.transform.SetParent(ListContent.transform);                           // 부모에 붙임
+		tmpObject.transform.GetChild(0).GetComponent<TMP_Text>().text = AlarmNameIF.text + "(" + TimeHourIF.text + " : "+TimeHIF.text + ")";
+		AlarmNameIF.text = ""; TimeHourIF.text = ""; TimeHIF.text = "";
+		InputPanel.SetActive(false);
 
-    }
+	}
 }
