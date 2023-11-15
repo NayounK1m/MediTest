@@ -5769,7 +5769,6 @@ MonoBehaviour:
   displayText: {fileID: 1161034236}
   outputImage: {fileID: 1842270476}
   mediPanel: {fileID: 990868533}
-  camPanel: {fileID: 2084784300}
   showImage: {fileID: 0}
   mediItemPrefab: {fileID: 76918539010453261, guid: c11155cf73b2e5a449c6f6398ff51fea, type: 3}
   mediScrollContent: {fileID: 9082801456938586926}
@@ -24204,7 +24203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2586249721747198803, guid: 36819a799fa312842a241f9963370573, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2586249721747198803, guid: 36819a799fa312842a241f9963370573, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -24212,7 +24211,7 @@ PrefabInstance:
       objectReference: {fileID: 715758983}
     - target: {fileID: 2586249721747198803, guid: 36819a799fa312842a241f9963370573, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TakePicturecamera
+      value: pictureBtn
       objectReference: {fileID: 0}
     - target: {fileID: 2586249721747198803, guid: 36819a799fa312842a241f9963370573, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
