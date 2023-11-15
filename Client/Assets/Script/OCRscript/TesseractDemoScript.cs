@@ -24,29 +24,28 @@ public class TesseractDemoScript : MonoBehaviour
 public GameObject mediPanel;
 	public Image showImage;
 	Image image;
-	//  public void pictureBtn()
-	// {
-	//     mediPanel.SetActive(false);
-	//     camPanel.SetActive(true);
+    public void pictureBtn()
+    {
+        mediPanel.SetActive(false);
 
-	//     NativeCamera.Permission permission = NativeCamera.TakePicture((path)=>
-	//     {
-	//         Debug.Log("Image path:"+path);
-	//         if(path != null)
-	//         {
-	//             Texture2D texture= NativeCamera.LoadImageAtPath(path,516);
-	//             if(texture == null)
-	//             {
-	//                 Debug.Log("Couldn't load texture from"+path);
-	//                 return;
-	//             }
-	//         }
-	//     }, 516);
-	//     Debug.Log("Permission result:"+permission);
-	//     //TakePicturecamera(516);
-	// }
+        NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
+        {
+            Debug.Log("Image path:" + path);
+            if (path != null)
+            {
+                Texture2D texture = NativeCamera.LoadImageAtPath(path, 516);
+                if (texture == null)
+                {
+                    Debug.Log("Couldn't load texture from" + path);
+                    return;
+                }
+            }
+        }, 516);
+        Debug.Log("Permission result:" + permission);
+       TakePicturecamera(516);
+    }
 
-	public void TakePicturecamera(int maxSize)
+    public void TakePicturecamera(int maxSize)
 	{
 		mediPanel.SetActive(false);
 
