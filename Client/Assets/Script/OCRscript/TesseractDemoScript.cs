@@ -227,7 +227,7 @@ public GameObject mediPanel;
 		string b64str = System.Convert.ToBase64String(_texture.EncodeToJPG(), Base64FormattingOptions.None);
 		WWWForm form = new WWWForm();
 		form.AddField("b464str", b64str);
-		UnityWebRequest request = Post("hsj3925.iptime.org/ocr", Convert.ToBase64String(Encoding.UTF8.GetBytes(b64str)));
+		UnityWebRequest request = Post("hsj3925.iptime.org:9090/ocr", Convert.ToBase64String(Encoding.UTF8.GetBytes(b64str)));
 		PostOCR(request);
 		string result = Encoding.UTF8.GetString(request.downloadHandler.data);
 		return result;
