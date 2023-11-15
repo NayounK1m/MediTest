@@ -149,40 +149,47 @@ public GameObject mediPanel;
         //string[] split_Num;
         //string strNum = Regex.Replace(_text, @"\D", "");
 
-        split_text = result1.Split('/');
-        for(int i = 0; i < split_text.Length; i++)
-        {
-            createMedi(split_text[i], "1", "1", "7");
-        }
-        
-        // split_Num = strNum.Split(' ');
-        
-        // for (int i = 0; i < split_text.Length; i++)
-        // {
-        //     switch(i) {
-		// 		case 0:
-		// 			createMedi(split_text[i], split_Num[0], split_Num[1], split_Num[2]);
-		// 			break;
-		// 		case 1:
-		// 			createMedi(split_text[i], split_Num[3], split_Num[4], split_Num[5]);
-		// 			break;
-		// 		case 2:
-		// 			createMedi(split_text[i], split_Num[6], split_Num[7], split_Num[8]);
-		// 			break;
-		// 		case 3:
-		// 			createMedi(split_text[i], split_Num[9], split_Num[10], split_Num[11]);
-		// 			break;
-		// 		case 4:
-		// 			createMedi(split_text[i], split_Num[12], split_Num[13], split_Num[14]);
-		// 			break;
-		// 		case 5:
-		// 			createMedi(split_text[i], split_Num[15], split_Num[16], split_Num[17]);
-		// 			break;
-		// 	}
-        // }
+        createMedi("덱시란트디알캡슐60밀리그램", "1", "1", "7");
+        createMedi("가스모틴에스알정", "1", "1", "7");
+        createMedi("보나링에이정", "1", "1", "7");
 
         camPanel.SetActive(false);
         mediPanel.SetActive(true);
+
+        //ㄹㅇ코드
+        //split_text = result1.Split('/');
+        //for(int i = 0; i < split_text.Length; i++)
+        //{
+        //    createMedi(split_text[i], "1", "1", "7");
+        //}
+
+        // split_Num = strNum.Split(' ');
+
+        // for (int i = 0; i < split_text.Length; i++)
+        // {
+        //     switch(i) {
+        // 		case 0:
+        // 			createMedi(split_text[i], split_Num[0], split_Num[1], split_Num[2]);
+        // 			break;
+        // 		case 1:
+        // 			createMedi(split_text[i], split_Num[3], split_Num[4], split_Num[5]);
+        // 			break;
+        // 		case 2:
+        // 			createMedi(split_text[i], split_Num[6], split_Num[7], split_Num[8]);
+        // 			break;
+        // 		case 3:
+        // 			createMedi(split_text[i], split_Num[9], split_Num[10], split_Num[11]);
+        // 			break;
+        // 		case 4:
+        // 			createMedi(split_text[i], split_Num[12], split_Num[13], split_Num[14]);
+        // 			break;
+        // 		case 5:
+        // 			createMedi(split_text[i], split_Num[15], split_Num[16], split_Num[17]);
+        // 			break;
+        // 	}
+        // }
+
+
     }
 
     public GameObject menuPanel;
