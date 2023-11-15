@@ -22,7 +22,6 @@ public class TesseractDemoScript : MonoBehaviour
 	private Texture2D _texture;
 
 public GameObject mediPanel;
-	public GameObject camPanel;
 	public Image showImage;
 	Image image;
 	//  public void pictureBtn()
@@ -50,7 +49,6 @@ public GameObject mediPanel;
 	public void TakePicturecamera(int maxSize)
 	{
 		mediPanel.SetActive(false);
-		camPanel.SetActive(true);
 
 		NativeCamera.Permission permission = NativeCamera.TakePicture((path)=>
 		{
@@ -114,7 +112,7 @@ public GameObject mediPanel;
 		AddToTextDisplay(Nocr());
 		//AddToTextDisplay(_tesseractDriver.Recognize(_texture));
 		//AddToTextDisplay(_tesseractDriver.GetErrorMessage(), true);
-		SetImageDisplay();
+		//SetImageDisplay();
 	}
 
 	private void ClearTextDisplay()
@@ -194,7 +192,6 @@ public GameObject mediPanel;
 		// 	}
 		// }
 
-		camPanel.SetActive(false);
 		mediPanel.SetActive(true);
 	}
 
