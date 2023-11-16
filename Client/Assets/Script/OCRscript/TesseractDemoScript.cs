@@ -23,10 +23,12 @@ public class TesseractDemoScript : MonoBehaviour
 
 public GameObject mediPanel;
 	public Image showImage;
+	public GameObject menuPanel;
 	Image image;
     public void pictureBtn()
     {
-        mediPanel.SetActive(false);
+		
+		menuPanel.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -2341);
 
         NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
         {
@@ -42,8 +44,12 @@ public GameObject mediPanel;
             }
         }, 516);
         Debug.Log("Permission result:" + permission);
-       TakePicturecamera(516);
-    }
+		createMedi("덱실란트디알캡슐60밀리그램", "1", "1", "7");
+		createMedi("가스모틴에스알정", "1", "1", "7");
+		createMedi("보나링에이정", "1", "1", "7");
+		//TakePicturecamera(516);
+
+	}
 
     public void TakePicturecamera(int maxSize)
 	{
@@ -194,7 +200,7 @@ public GameObject mediPanel;
 		mediPanel.SetActive(true);
 	}
 
-	public GameObject menuPanel;
+	
 	private void createMedi(string mn, string dosage, string numD, string dayD)
 	{
 		GameObject tmpObject = GameObject.Instantiate(mediItemPrefab) ;    // 오브젝트 생성
