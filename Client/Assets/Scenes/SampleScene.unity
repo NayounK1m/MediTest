@@ -5768,6 +5768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayText: {fileID: 1161034236}
   outputImage: {fileID: 1842270476}
+  _active: {fileID: 1906299511}
   mediPanel: {fileID: 990868533}
   showImage: {fileID: 0}
   mediItemPrefab: {fileID: 76918539010453261, guid: c11155cf73b2e5a449c6f6398ff51fea, type: 3}

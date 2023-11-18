@@ -20,6 +20,7 @@ public class TesseractDemoScript : MonoBehaviour
 	private TesseractDriver _tesseractDriver;
 	private string _text = "";
 	private Texture2D _texture;
+	public Active _active;
 
 public GameObject mediPanel;
 	public Image showImage;
@@ -164,9 +165,11 @@ public GameObject mediPanel;
 		{
 			createMedi(split_text[i], "1", "1", "7");
 		}
-		
+
+		_active.overlapChangeImage();
+
 		// split_Num = strNum.Split(' ');
-		
+
 		// for (int i = 0; i < split_text.Length; i++)
 		// {
 		//     switch(i) {

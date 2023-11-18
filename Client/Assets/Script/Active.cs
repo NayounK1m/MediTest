@@ -160,14 +160,15 @@ public class Active : MonoBehaviour
 		return result;
 	}
 
-	private void overlapChangeImage()
+	public void overlapChangeImage()
 	{
 		//부작용 체크
-		Transform[] allChildren = List.GetComponentsInChildren<Transform>();
-		Transform[] allChildrenChild = allChildren[1].GetComponents<Transform>();
-		Debug.Log(allChildren[1].name); //MediItem
-		foreach(Transform child in allChildrenChild) 
+		Transform[] allChildren = List.GetComponents<Transform>();
+		Transform itemlist = allChildren[0].GetComponent<Transform>();
+		
+		for (int i = 0; i < itemlist.childCount; i++) 
 		{
+			Transform child = itemlist.GetChild(i);
     		// 자기 자신의 경우엔 무시 
     		// (게임오브젝트명이 다 다르다고 가정했을 때 통하는 코드)
     		if(child.name == transform.name)
