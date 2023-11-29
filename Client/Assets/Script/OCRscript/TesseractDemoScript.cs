@@ -29,20 +29,20 @@ public GameObject mediPanel;
     {
         mediPanel.SetActive(false);
 
-        NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
-        {
-            Debug.Log("Image path:" + path);
-            if (path != null)
-            {
-                Texture2D texture = NativeCamera.LoadImageAtPath(path, 516);
-                if (texture == null)
-                {
-                    Debug.Log("Couldn't load texture from" + path);
-                    return;
-                }
-            }
-        }, 516);
-        Debug.Log("Permission result:" + permission);
+        //NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
+        //{
+        //    Debug.Log("Image path:" + path);
+        //    if (path != null)
+        //    {
+        //        Texture2D texture = NativeCamera.LoadImageAtPath(path, 516);
+        //        if (texture == null)
+        //        {
+        //            Debug.Log("Couldn't load texture from" + path);
+        //            return;
+        //        }
+        //    }
+        //}, 516);
+        //Debug.Log("Permission result:" + permission);
        TakePicturecamera(516);
     }
 
